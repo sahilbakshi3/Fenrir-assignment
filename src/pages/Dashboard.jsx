@@ -5,7 +5,7 @@ import {
   Columns,
   Ban,
   AlertTriangle,
-  SearchAlert,
+  ShieldCheck,
   RefreshCcw,
 } from "lucide-react";
 import { orgStats, severityStats, scans } from "../data/mockData";
@@ -29,12 +29,12 @@ const SEVERITY_ICONS = {
     border: "rgba(249,115,22,0.2)",
   },
   medium: {
-    icon: <TriangleAlert size={16} color="#EAB308" />,
+    icon: <AlertTriangle size={16} color="#EAB308" />,
     bg: "rgba(234,179,8,0.12)",
     border: "rgba(234,179,8,0.2)",
   },
   low: {
-    icon: <SearchAlert size={16} color="#ebf2ff" />,
+    icon: <ShieldCheck size={16} color="#22C55E" />,
     bg: "rgba(34,197,94,0.12)",
     border: "rgba(34,197,94,0.2)",
   },
@@ -89,7 +89,7 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
         </div>
         <div className="dashboard__org-refresh">
           <span className="dashboard__org-time">
-            <RefreshCcw size={12} color="#0e9e9e" /> {orgStats.lastUpdated}
+            <RefreshCcw size={12} color="#0CC8A8" /> {orgStats.lastUpdated}
           </span>
         </div>
       </div>
@@ -125,7 +125,6 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
 
       {/* Table section */}
       <div className="dashboard__table-section">
-        {/* Toolbar */}
         <div className="dashboard__toolbar">
           <div className="dashboard__search">
             <Search size={14} />
@@ -149,7 +148,6 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
           </div>
         </div>
 
-        {/* Table */}
         <div className="dashboard__table-wrap">
           <table className="dashboard__table">
             <thead>
