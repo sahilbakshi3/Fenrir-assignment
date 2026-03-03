@@ -20,7 +20,6 @@ function renderLogLine(log) {
   if (!log.highlights) {
     return <span>{log.text}</span>;
   }
-
   return (
     <>
       {log.text}
@@ -41,11 +40,11 @@ function renderLogLine(log) {
 }
 
 const STEP_ICONS = [
-  <Radar size={14} />,
-  <Map size={14} />,
-  <FlaskConical size={14} />,
-  <CheckCircle size={14} />,
-  <FileText size={14} />,
+  <Radar size={18} />,
+  <Map size={18} />,
+  <FlaskConical size={18} />,
+  <CheckCircle size={18} />,
+  <FileText size={18} />,
 ];
 
 export default function ScanDetail({ showToast, showModal }) {
@@ -106,6 +105,10 @@ export default function ScanDetail({ showToast, showModal }) {
           value={activeScan.progress}
           label={activeScan.status}
         />
+
+        {/* Vertical divider */}
+        <div className="scan-detail__progress-divider" />
+
         <div className="scan-detail__steps-wrap">
           <div className="scan-detail__steps">
             {activeScan.steps.map((step, i) => (
@@ -213,32 +216,36 @@ export default function ScanDetail({ showToast, showModal }) {
         </div>
       </div>
 
-      {/* Status bar */}
+      {/* Status bar — left items + right severity counts */}
       <div className="scan-detail__status-bar">
-        <span className="scan-detail__status-item">
-          <span className="scan-detail__status-dot" />
-          Sub-Agents: <strong>0</strong>
-        </span>
-        <span className="scan-detail__status-item">
-          <span className="scan-detail__status-dot" />
-          Parallel Executions: <strong>2</strong>
-        </span>
-        <span className="scan-detail__status-item">
-          <span className="scan-detail__status-dot" />
-          Operations: <strong>1</strong>
-        </span>
-        <span className="scan-detail__status-sev">
-          Critical: <strong style={{ color: "var(--critical)" }}>0</strong>
-        </span>
-        <span className="scan-detail__status-sev">
-          High: <strong style={{ color: "var(--high)" }}>0</strong>
-        </span>
-        <span className="scan-detail__status-sev">
-          Medium: <strong style={{ color: "var(--medium)" }}>0</strong>
-        </span>
-        <span className="scan-detail__status-sev">
-          Low: <strong style={{ color: "var(--low)" }}>0</strong>
-        </span>
+        <div className="scan-detail__status-left">
+          <span className="scan-detail__status-item">
+            <span className="scan-detail__status-dot" />
+            Sub-Agents: <strong>0</strong>
+          </span>
+          <span className="scan-detail__status-item">
+            <span className="scan-detail__status-dot" />
+            Parallel Executions: <strong>2</strong>
+          </span>
+          <span className="scan-detail__status-item">
+            <span className="scan-detail__status-dot" />
+            Operations: <strong>1</strong>
+          </span>
+        </div>
+        <div className="scan-detail__status-right">
+          <span className="scan-detail__status-sev">
+            Critical: <strong style={{ color: "var(--critical)" }}>0</strong>
+          </span>
+          <span className="scan-detail__status-sev">
+            High: <strong style={{ color: "var(--high)" }}>0</strong>
+          </span>
+          <span className="scan-detail__status-sev">
+            Medium: <strong style={{ color: "var(--medium)" }}>0</strong>
+          </span>
+          <span className="scan-detail__status-sev">
+            Low: <strong style={{ color: "var(--low)" }}>0</strong>
+          </span>
+        </div>
       </div>
     </div>
   );

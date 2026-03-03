@@ -100,7 +100,13 @@
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
-  margin-bottom: 8px;
+}
+
+.dashboard__severity-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .dashboard__severity-change {

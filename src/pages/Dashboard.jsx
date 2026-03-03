@@ -108,12 +108,14 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
                 {SEVERITY_ICONS[s.color].icon}
               </span>
             </div>
-            <div className="dashboard__severity-count">{s.count}</div>
-            <div
-              className={`dashboard__severity-change dashboard__severity-change--${s.direction}`}
-            >
-              {s.direction === "up" ? "↑" : "↓"} {s.change}{" "}
-              {s.direction === "up" ? "increase" : "decrease"} than yesterday
+            <div className="dashboard__severity-bottom">
+              <div className="dashboard__severity-count">{s.count}</div>
+              <div
+                className={`dashboard__severity-change dashboard__severity-change--${s.direction}`}
+              >
+                {s.direction === "up" ? "↑" : "↓"} {s.change}{" "}
+                {s.direction === "up" ? "increase" : "decrease"} than yesterday
+              </div>
             </div>
           </div>
         ))}

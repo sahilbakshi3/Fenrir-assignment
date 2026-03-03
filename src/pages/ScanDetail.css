@@ -52,11 +52,19 @@
 /* Progress section */
 .scan-detail__progress-section {
   display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 28px 24px;
+  align-items: center;
+  gap: 0;
+  padding: 28px 32px;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
+}
+
+.scan-detail__progress-divider {
+  width: 1px;
+  height: 80px;
+  background: var(--border-strong);
+  margin: 0 32px;
+  flex-shrink: 0;
 }
 
 .scan-detail__steps-wrap {
@@ -76,7 +84,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--text-muted);
   font-size: 12px;
   font-weight: 500;
@@ -90,9 +98,10 @@
   color: var(--text-secondary);
 }
 
+/* Dark circle step icons */
 .scan-detail__step-icon {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 2px solid var(--border-strong);
   display: flex;
@@ -100,16 +109,18 @@
   justify-content: center;
   background: var(--bg-elevated);
   transition: all var(--transition);
+  color: var(--text-muted);
 }
 
 .scan-detail__step--active .scan-detail__step-icon {
   border-color: var(--teal);
-  background: var(--teal-dim);
-  color: var(--teal);
+  background: var(--teal);
+  color: #000;
 }
 
 .scan-detail__step--done .scan-detail__step-icon {
-  border-color: rgba(148,163,184,0.4);
+  border-color: var(--border-strong);
+  background: var(--bg-elevated);
   color: var(--text-secondary);
 }
 
@@ -117,7 +128,7 @@
   flex: 1;
   height: 1px;
   background: var(--border-strong);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   min-width: 20px;
 }
 
@@ -195,8 +206,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .scan-detail__console-meta {
@@ -255,7 +271,9 @@
   margin-bottom: -1px;
 }
 
-.scan-detail__tab:hover { color: var(--text-primary); }
+.scan-detail__tab:hover {
+  color: var(--text-primary);
+}
 
 .scan-detail__tab--active {
   color: var(--teal);
@@ -288,8 +306,12 @@
   color: var(--text-primary);
 }
 
-.log-highlight--url { color: var(--teal); }
-.log-highlight--string { color: var(--high); }
+.log-highlight--url {
+  color: var(--teal);
+}
+.log-highlight--string {
+  color: var(--high);
+}
 .log-highlight--path {
   background: var(--bg-elevated);
   border: 1px solid var(--border-strong);
@@ -297,7 +319,10 @@
   border-radius: 3px;
   color: var(--text-primary);
 }
-.log-highlight--bold { font-weight: 700; color: var(--critical); }
+.log-highlight--bold {
+  font-weight: 700;
+  color: var(--critical);
+}
 
 /* Findings panel */
 .scan-detail__findings-panel {
@@ -369,17 +394,28 @@
   line-height: 1.5;
 }
 
-/* Status bar */
+/* Status bar — spread across full width */
 .scan-detail__status-bar {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 10px 24px;
+  justify-content: space-between;
+  padding: 12px 28px;
   background: var(--bg-surface);
   border-top: 1px solid var(--border);
   font-size: 12px;
   color: var(--text-secondary);
-  flex-wrap: wrap;
+}
+
+.scan-detail__status-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.scan-detail__status-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .scan-detail__status-item {
@@ -411,5 +447,10 @@
   .scan-detail__progress-section {
     flex-direction: column;
     align-items: center;
+  }
+  .scan-detail__progress-divider {
+    width: 80%;
+    height: 1px;
+    margin: 16px 0;
   }
 }
