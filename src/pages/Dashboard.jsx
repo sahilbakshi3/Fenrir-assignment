@@ -3,10 +3,10 @@ import {
   Search,
   Filter,
   Columns,
-  ShieldAlert,
-  ShieldX,
-  Shield,
-  ShieldCheck,
+  Ban,
+  TriangleAlert,
+  SearchAlert,
+  RefreshCcw,
 } from "lucide-react";
 import { orgStats, severityStats, scans } from "../data/mockData";
 import {
@@ -19,22 +19,22 @@ import "./Dashboard.css";
 
 const SEVERITY_ICONS = {
   critical: {
-    icon: <ShieldX size={16} color="#EF4444" />,
+    icon: <Ban size={16} color="#EF4444" />,
     bg: "rgba(239,68,68,0.12)",
     border: "rgba(239,68,68,0.2)",
   },
   high: {
-    icon: <ShieldAlert size={16} color="#F97316" />,
+    icon: <TriangleAlert size={16} color="#F97316" />,
     bg: "rgba(249,115,22,0.12)",
     border: "rgba(249,115,22,0.2)",
   },
   medium: {
-    icon: <Shield size={16} color="#EAB308" />,
+    icon: <TriangleAlert size={16} color="#EAB308" />,
     bg: "rgba(234,179,8,0.12)",
     border: "rgba(234,179,8,0.2)",
   },
   low: {
-    icon: <ShieldCheck size={16} color="#22C55E" />,
+    icon: <SearchAlert size={16} color="#ebf2ff" />,
     bg: "rgba(34,197,94,0.12)",
     border: "rgba(34,197,94,0.2)",
   },
@@ -88,7 +88,9 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
           <span className="dashboard__org-value">{orgStats.failedScans}</span>
         </div>
         <div className="dashboard__org-refresh">
-          <span className="dashboard__org-time">↻ {orgStats.lastUpdated}</span>
+          <span className="dashboard__org-time">
+            <RefreshCcw size={12} color="#0e9e9e" /> {orgStats.lastUpdated}
+          </span>
         </div>
       </div>
 
