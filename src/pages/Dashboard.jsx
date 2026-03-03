@@ -42,12 +42,39 @@ const SEVERITY_ICONS = {
 
 export default function Dashboard({ onScanClick, showToast, showModal }) {
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(8);
 
   const filtered = scans.filter(
     (s) =>
       s.name.toLowerCase().includes(search.toLowerCase()) ||
-      s.type.toLowerCase().includes(search.toLowerCase()),
+      s.type.toLowerCase().includes(search.toLowerCase()) ||
+      s.status.toLowerCase().includes(search.toLowerCase()),
   );
+  const totalPages = Math.ceil(filtered.length / pageSize);
+  const paginated = filtered.slice((page - 1) * pageSize, page * pageSize);
+
+  const handleSearch = (val) => {
+    setSearch(val);
+    setPage(1);
+  };
+
+  const getPageNums = () => {
+    if (totalPages <= 7)
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    if (page <= 4) return [1, 2, 3, 4, 5, "…", totalPages];
+    if (page >= totalPages - 3)
+      return [
+        1,
+        "…",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    return [1, "…", page - 1, page, page + 1, "…", totalPages];
+  };
 
   const handleNewScan = () => showToast("Opening new scan wizard...", "info");
   const handleFilter = () => showToast("Filter options coming soon", "info");
@@ -130,7 +157,7 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
             <Search size={14} />
             <input
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search scans by name or type..."
               className="dashboard__search-input"
             />
@@ -161,7 +188,7 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
               </tr>
             </thead>
             <tbody>
-              {filtered.map((scan) => (
+              {paginated.map((scan) => (
                 <tr
                   key={scan.id}
                   onClick={() => onScanClick(scan)}
@@ -201,13 +228,87 @@ export default function Dashboard({ onScanClick, showToast, showModal }) {
         </div>
 
         <div className="dashboard__table-footer">
-          <span>
-            Showing {filtered.length} of {scans.length} Scans
-          </span>
-          <div className="dashboard__pagination">
-            <button className="dashboard__page-btn">‹</button>
-            <button className="dashboard__page-btn">›</button>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <span>
+              Showing {Math.min((page - 1) * pageSize + 1, filtered.length)}–
+              {Math.min(page * pageSize, filtered.length)} of {filtered.length}{" "}
+              scans
+            </span>
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                fontSize: 12,
+                color: "var(--text-secondary)",
+              }}
+            >
+              Rows:
+              <select
+                value={pageSize}
+                onChange={(e) => {
+                  setPageSize(Number(e.target.value));
+                  setPage(1);
+                }}
+                style={{
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--border-strong)",
+                  borderRadius: "var(--radius-sm)",
+                  color: "var(--text-primary)",
+                  fontSize: 12,
+                  padding: "3px 8px",
+                  fontFamily: "var(--font-main)",
+                  cursor: "pointer",
+                }}
+              >
+                {[8, 15, 25].map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </span>
           </div>
+          {totalPages > 1 && (
+            <div className="dashboard__pagination">
+              <button
+                className="dashboard__page-btn"
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+              >
+                ‹
+              </button>
+              {getPageNums().map((n, i) =>
+                n === "…" ? (
+                  <span
+                    key={`e${i}`}
+                    style={{
+                      color: "var(--text-muted)",
+                      padding: "0 4px",
+                      fontSize: 13,
+                    }}
+                  >
+                    …
+                  </span>
+                ) : (
+                  <button
+                    key={n}
+                    className={`dashboard__page-btn${page === n ? " dashboard__page-btn--active" : ""}`}
+                    onClick={() => setPage(n)}
+                  >
+                    {n}
+                  </button>
+                ),
+              )}
+              <button
+                className="dashboard__page-btn"
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+              >
+                ›
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ export default function App() {
   const [toasts, setToasts] = useState([]);
   const [modal, setModal] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const showToast = useCallback((message, type = "info") => {
     const id = ++toastId;
@@ -76,6 +77,8 @@ export default function App() {
       <Sidebar
         activePage={activeSidebar}
         onNavigate={handleNavigate}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed((c) => !c)}
         className={sidebarOpen ? "sidebar--open" : ""}
       />
 

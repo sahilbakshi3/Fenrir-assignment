@@ -299,6 +299,18 @@
   color: var(--text-primary);
 }
 
+.dashboard__page-btn--active {
+  background: var(--teal);
+  color: #000;
+  border-color: var(--teal);
+  font-weight: 700;
+}
+
+.dashboard__page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .dashboard__severity-grid {
     grid-template-columns: repeat(2, 1fr);
