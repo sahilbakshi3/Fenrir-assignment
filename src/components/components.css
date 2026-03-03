@@ -9,10 +9,26 @@
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
-.severity-badge--critical { background: var(--critical-bg); color: var(--critical); border: 1px solid rgba(239,68,68,0.25); }
-.severity-badge--high { background: var(--high-bg); color: var(--high); border: 1px solid rgba(249,115,22,0.25); }
-.severity-badge--medium { background: var(--medium-bg); color: var(--medium); border: 1px solid rgba(234,179,8,0.25); }
-.severity-badge--low { background: var(--low-bg); color: var(--low); border: 1px solid rgba(34,197,94,0.25); }
+.severity-badge--critical {
+  background: var(--critical-bg);
+  color: var(--critical);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+.severity-badge--high {
+  background: var(--high-bg);
+  color: var(--high);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+.severity-badge--medium {
+  background: var(--medium-bg);
+  color: var(--medium);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+.severity-badge--low {
+  background: var(--low-bg);
+  color: var(--low);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
 
 /* ===== STATUS CHIP ===== */
 .status-chip {
@@ -23,9 +39,21 @@
   font-size: 12px;
   font-weight: 600;
 }
-.status-chip--completed { background: rgba(34,197,94,0.1); color: #22C55E; border: 1px solid rgba(34,197,94,0.2); }
-.status-chip--scheduled { background: rgba(148,163,184,0.1); color: #94A3B8; border: 1px solid rgba(148,163,184,0.2); }
-.status-chip--failed { background: rgba(239,68,68,0.1); color: var(--critical); border: 1px solid rgba(239,68,68,0.2); }
+.status-chip--completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.status-chip--scheduled {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+.status-chip--failed {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--critical);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
 
 /* ===== VULN BADGE ===== */
 .vuln-badge {
@@ -40,10 +68,19 @@
   font-weight: 700;
   color: #fff;
 }
-.vuln-badge--critical { background: var(--critical); }
-.vuln-badge--high { background: var(--high); }
-.vuln-badge--medium { background: var(--medium); color: #000; }
-.vuln-badge--low { background: var(--low); }
+.vuln-badge--critical {
+  background: var(--critical);
+}
+.vuln-badge--high {
+  background: var(--high);
+}
+.vuln-badge--medium {
+  background: var(--medium);
+  color: #000;
+}
+.vuln-badge--low {
+  background: var(--low);
+}
 
 /* ===== BUTTON ===== */
 .btn {
@@ -57,44 +94,98 @@
   transition: all var(--transition);
   white-space: nowrap;
 }
-.btn--md { padding: 8px 16px; }
-.btn--sm { padding: 5px 12px; font-size: 12px; }
-.btn--lg { padding: 12px 24px; font-size: 14px; }
+.btn--md {
+  padding: 8px 16px;
+}
+.btn--sm {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+.btn--lg {
+  padding: 12px 24px;
+  font-size: 14px;
+}
 
-.btn--primary { background: var(--teal); color: #000; }
-.btn--primary:hover { background: var(--teal-hover); }
+.btn--primary {
+  background: var(--teal);
+  color: #000;
+}
+.btn--primary:hover {
+  background: var(--teal-hover);
+}
 
-.btn--danger { background: var(--critical); color: #fff; }
-.btn--danger:hover { background: #dc2626; }
+.btn--danger {
+  background: var(--critical);
+  color: #fff;
+}
+.btn--danger:hover {
+  background: #dc2626;
+}
 
-.btn--ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-strong); }
-.btn--ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+.btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+}
+.btn--ghost:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
 
-.btn--outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-strong); }
-.btn--outline:hover { background: var(--bg-hover); }
+.btn--outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+.btn--outline:hover {
+  background: var(--bg-hover);
+}
 
-.btn--stop { background: transparent; color: var(--critical); border: 1px solid var(--critical); }
-.btn--stop:hover { background: rgba(239,68,68,0.1); }
+.btn--stop {
+  background: transparent;
+  color: var(--critical);
+  border: 1px solid var(--critical);
+}
+.btn--stop:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
 
-.btn--default { background: var(--bg-elevated); color: var(--text-primary); border: 1px solid var(--border); }
-.btn--default:hover { background: var(--bg-hover); }
+.btn--default {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn--default:hover {
+  background: var(--bg-hover);
+}
 
 /* ===== PROGRESS BAR ===== */
 .progress-bar-track {
   width: 120px;
   height: 6px;
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
 }
+
+[data-theme="light"] .progress-bar-track {
+  background: rgba(0, 0, 0, 0.08);
+}
+
 .progress-bar-fill {
   height: 100%;
   border-radius: 10px;
   transition: width 0.5s ease;
 }
-.progress-bar-fill--default { background: var(--teal); }
-.progress-bar-fill--failed { background: var(--critical); }
+
+.progress-bar-fill--default {
+  background: linear-gradient(90deg, #0cc8a8, #0ab394);
+}
+
+.progress-bar-fill--failed {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
 
 /* ===== CIRCULAR PROGRESS ===== */
 .circular-progress {
@@ -103,7 +194,10 @@
   height: 140px;
   flex-shrink: 0;
 }
-.circular-progress svg { position: absolute; inset: 0; }
+.circular-progress svg {
+  position: absolute;
+  inset: 0;
+}
 .circular-progress__center {
   position: absolute;
   inset: 0;

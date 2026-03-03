@@ -1,5 +1,5 @@
-import React from 'react';
-import './components.css';
+import React from "react";
+import "./components.css";
 
 /* ===== SEVERITY BADGE ===== */
 export function SeverityBadge({ level }) {
@@ -22,13 +22,18 @@ export function StatusChip({ status }) {
 /* ===== VULN BADGE ===== */
 export function VulnBadge({ count, type }) {
   if (count === null || count === undefined) return null;
-  return (
-    <span className={`vuln-badge vuln-badge--${type}`}>{count}</span>
-  );
+  return <span className={`vuln-badge vuln-badge--${type}`}>{count}</span>;
 }
 
 /* ===== BUTTON ===== */
-export function Button({ children, variant = 'default', size = 'md', onClick, className = '', disabled }) {
+export function Button({
+  children,
+  variant = "default",
+  size = "md",
+  onClick,
+  className = "",
+  disabled,
+}) {
   return (
     <button
       className={`btn btn--${variant} btn--${size} ${className}`}
@@ -42,11 +47,11 @@ export function Button({ children, variant = 'default', size = 'md', onClick, cl
 
 /* ===== PROGRESS BAR ===== */
 export function ProgressBar({ value, status }) {
-  const colorClass = status === 'Failed' ? 'progress-bar--failed' : 'progress-bar--default';
+  const isFailed = status === "Failed";
   return (
     <div className="progress-bar-track">
       <div
-        className={`progress-bar-fill ${colorClass}`}
+        className={`progress-bar-fill ${isFailed ? "progress-bar-fill--failed" : "progress-bar-fill--default"}`}
         style={{ width: `${value}%` }}
       />
     </div>
@@ -61,9 +66,18 @@ export function CircularProgress({ value, label }) {
   return (
     <div className="circular-progress">
       <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle cx="70" cy="70" r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="10" />
         <circle
-          cx="70" cy="70" r={r}
+          cx="70"
+          cy="70"
+          r={r}
+          fill="none"
+          stroke="rgba(255,255,255,0.06)"
+          strokeWidth="10"
+        />
+        <circle
+          cx="70"
+          cy="70"
+          r={r}
           fill="none"
           stroke="#0CC8A8"
           strokeWidth="10"
@@ -86,22 +100,35 @@ export function ToastContainer({ toasts }) {
   return (
     <div className="toast-container">
       {toasts.map((t) => (
-        <div key={t.id} className={`toast ${t.type || ''}`}>{t.message}</div>
+        <div key={t.id} className={`toast ${t.type || ""}`}>
+          {t.message}
+        </div>
       ))}
     </div>
   );
 }
 
 /* ===== MODAL ===== */
-export function Modal({ title, message, onConfirm, onCancel, confirmLabel = 'Confirm', confirmVariant = 'danger' }) {
+export function Modal({
+  title,
+  message,
+  onConfirm,
+  onCancel,
+  confirmLabel = "Confirm",
+  confirmVariant = "danger",
+}) {
   return (
     <div className="modal-overlay" onClick={onCancel}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h3>{title}</h3>
         <p>{message}</p>
         <div className="modal-actions">
-          <Button variant="ghost" onClick={onCancel}>Cancel</Button>
-          <Button variant={confirmVariant} onClick={onConfirm}>{confirmLabel}</Button>
+          <Button variant="ghost" onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button variant={confirmVariant} onClick={onConfirm}>
+            {confirmLabel}
+          </Button>
         </div>
       </div>
     </div>
