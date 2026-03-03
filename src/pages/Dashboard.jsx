@@ -4,7 +4,7 @@ import {
   Filter,
   Columns,
   Ban,
-  TriangleAlert,
+  AlertTriangle,
   SearchAlert,
   RefreshCcw,
 } from "lucide-react";
@@ -24,7 +24,7 @@ const SEVERITY_ICONS = {
     border: "rgba(239,68,68,0.2)",
   },
   high: {
-    icon: <TriangleAlert size={16} color="#F97316" />,
+    icon: <AlertTriangle size={16} color="#F97316" />,
     bg: "rgba(249,115,22,0.12)",
     border: "rgba(249,115,22,0.2)",
   },
